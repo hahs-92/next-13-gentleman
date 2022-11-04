@@ -1,7 +1,13 @@
+import { TeamList } from "./components";
+import { TeamResponse } from "./models";
 import { getTeams } from "./services";
 
 export default async function Page() {
-  const teams = await getTeams();
+  const data: TeamResponse = await getTeams();
 
-  return <div>teams: {JSON.stringify(teams)}</div>;
+  return (
+    <main>
+      <TeamList teams={data.teams} />
+    </main>
+  );
 }
